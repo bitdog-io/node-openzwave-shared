@@ -1,6 +1,6 @@
 /*
 * Copyright (c) 2013 Jonathan Perkin <jonathan@perkin.org.uk>
-* Copyright (c) 2015-1016 Elias Karakoulakis <elias.karakoulakis@gmail.com>
+* Copyright (c) 2015-2017 Elias Karakoulakis <elias.karakoulakis@gmail.com>
 *
 * Permission to use, copy, modify, and distribute this software for any
 * purpose with or without fee is hereby granted, provided that the above
@@ -26,12 +26,12 @@
 #include <v8.h>
 #include "nan.h"
 
-#include "Manager.h"
-#include "Driver.h"
-#include "Node.h"
-#include "Notification.h"
-#include "Options.h"
-#include "Value.h"
+#include "openzwave/Manager.h"
+#include "openzwave/Driver.h"
+#include "openzwave/Node.h"
+#include "openzwave/Notification.h"
+#include "openzwave/Options.h"
+#include "openzwave/value_classes/Value.h"
 
 #if defined(_WIN32) || defined( __APPLE__)
     #include <unordered_map>
@@ -54,7 +54,7 @@ namespace OZW {
 		static NAN_METHOD(SetConfigParam);
 		static NAN_METHOD(RequestConfigParam);
 		static NAN_METHOD(RequestAllConfigParams);
-		// openzwave-controller.cc
+		// openzwave-driver.cc
 		static NAN_METHOD(HardReset);
 		static NAN_METHOD(SoftReset);
 		static NAN_METHOD(GetControllerNodeId);
@@ -65,7 +65,6 @@ namespace OZW {
 		static NAN_METHOD(GetLibraryVersion);
 		static NAN_METHOD(GetLibraryTypeName);
 		static NAN_METHOD(GetSendQueueCount);
-		// openzwave-driver.cc
 		static NAN_METHOD(Connect);
 		static NAN_METHOD(Disconnect);
 		// openzwave-groups.cc
@@ -111,6 +110,7 @@ namespace OZW {
 		static NAN_METHOD(SwitchAllOn);
 		static NAN_METHOD(SwitchAllOff);
     static NAN_METHOD(PressButton);
+		static NAN_METHOD(ReleaseButton);
 		//
 		static NAN_METHOD(RefreshNodeInfo);
 		static NAN_METHOD(RequestNodeState);
@@ -143,6 +143,7 @@ namespace OZW {
 		static NAN_METHOD(GetNodeNeighbors);
 		// openzwave-values.cc
 		static NAN_METHOD(SetValue);
+		static NAN_METHOD(SetValueLabel);
 		static NAN_METHOD(RefreshValue);
 		static NAN_METHOD(SetChangeVerified);
     static NAN_METHOD(GetNumSwitchPoints);

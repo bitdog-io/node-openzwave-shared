@@ -1,6 +1,6 @@
 /*
 * Copyright (c) 2013 Jonathan Perkin <jonathan@perkin.org.uk>
-* Copyright (c) 2015-1017 Elias Karakoulakis <elias.karakoulakis@gmail.com>
+* Copyright (c) 2015-2017 Elias Karakoulakis <elias.karakoulakis@gmail.com>
 *
 * Permission to use, copy, modify, and distribute this software for any
 * purpose with or without fee is hereby granted, provided that the above
@@ -55,7 +55,7 @@ namespace OZW {
 		cbinfo[0] = Nan::New<String>("connected").ToLocalChecked();
 		cbinfo[1] = Nan::New<String>(version).ToLocalChecked();
 
-		emit_cb->Call(2, cbinfo);
+		emit_cb->Call(Nan::New(ctx_obj), 2, cbinfo);
 	}
 
 	// ===================================================================

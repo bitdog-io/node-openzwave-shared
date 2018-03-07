@@ -1,7 +1,6 @@
 node-openzwave-shared
 =====================
-
-[![Join the chat at https://gitter.im/OpenZWave/node-openzwave-shared](https://badges.gitter.im/OpenZWave/node-openzwave-shared.svg)](https://gitter.im/OpenZWave/node-openzwave-shared?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://travis-ci.org/OpenZWave/node-openzwave-shared.svg?branch=master)](https://travis-ci.org/OpenZWave/node-openzwave-shared) [![Join the chat at https://gitter.im/OpenZWave/node-openzwave-shared](https://badges.gitter.im/OpenZWave/node-openzwave-shared.svg)](https://gitter.im/OpenZWave/node-openzwave-shared?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 This is the homepage for *node-openzwave-shared*, the official binary add-on for
 Node.js, which wraps [Open ZWave](http://openzwave.com/), a high quality C++
@@ -32,6 +31,14 @@ This addon is currently able to:
 - *perform* management tasks (add/remove nodes, replace failed nodes, manage
 	their group associations etc)
 
+**API change notice (v1.4.0)**
+`enablePoll()` and `disablePoll()` used to affect *only the first ValueID of any given command class*.
+This is *wrong*, as for multi-instance devices you probably need to poll multiple ValueID's.
+These calls now accept a valueId, in very much the same way as `setValue()` does. This means that 
+you now have to pass a valueID object (or its 4 constituents) for each value you want to enable/disable 
+polling for.
+
+
 **Important notice**
 
 This library differs from its [ancestor library](https://github.com/jperkin/node-openzwave)
@@ -61,7 +68,7 @@ installed first. You can do this one of two ways.
 ([latest code from GitHub](https://github.com/OpenZWave/open-zwave/archive/master.zip) or
 [a stable release](https://github.com/OpenZWave/open-zwave/releases)) or
 from [the OpenZWave snapshots repository](http://old.openzwave.com/snapshots/)
-and then 2) compiling it and installing on your system (`make && sudo make install`)
+and then 2) compiling it and installing on your system (`make && sudo make install && sudo ldconfig`)
 
 - You could also install OpenZWave via a [precompiled package that's suitable for
 your Linux distribution and architecture](http://old.openzwave.com/downloads/).
